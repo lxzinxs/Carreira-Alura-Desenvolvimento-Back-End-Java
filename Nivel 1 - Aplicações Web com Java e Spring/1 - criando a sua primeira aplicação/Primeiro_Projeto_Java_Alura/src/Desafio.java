@@ -6,11 +6,10 @@ public class Desafio {
 
         String divisoria = "******************************************";
         String espaco = "           ";
+        String tipoConta = "Corrente";
 
         System.out.print("Digite o seu nome: ");
         String nome = teclado.nextLine();
-        System.out.print("Digite o seu tipo de conta: ");
-        String tipoConta = teclado.next();
         System.out.print("Digite o seu saldo inicial: ");
         double saldo = teclado.nextDouble();
 
@@ -23,34 +22,43 @@ public class Desafio {
 
         boolean rodar = true;
         while (rodar) {
-
             System.out.println("""
                 \n
                 Selecione a opção que deseja:
                 1 - Consultar saldos
-                2 - Receber valor
-                3 - Transferir valor
+                2 - Depositar valor
+                3 - Sacar valor
                 4 - Sair
                 """);
             int opcao = teclado.nextInt();
+
             switch (opcao) {
                 case 1:
                     System.out.println("Seu saldo atual é R$" + saldo);
                     break;
                 case 2:
-                    System.out.println("Digite o valor que deseja receber: ");
-                    double receber = teclado.nextDouble();
-                    receber += saldo;
+                    System.out.println("Digite o valor que deseja depositar: ");
+                    double depositar = teclado.nextDouble();
+                    saldo += depositar;
+                    System.out.println("Saldo atualizado R$" + saldo);
                     break;
                 case 3:
-                    System.out.println("Digite o valor que deseja transferir: ");
-                    double transferir = teclado.nextDouble();
-                    transferir -= saldo;
-                    break;
+                    System.out.println("Digite o valor que deseja sacar: ");
+                    double sacar = teclado.nextDouble();
+                    if (sacar > saldo) {
+                        System.out.println("Você não possui esse dinheiro!");
+                        break;
+                    } else {
+                        saldo -= sacar;
+                        System.out.println("Saldo atualizado R$" + saldo);
+                        break;
+                    }
                 case 4:
                     System.out.println("Você saiu do programa!");
                     rodar = false;
                     break;
+                default:
+                    System.out.println("Escreva uma opção válida!");
             }
         }
     }
