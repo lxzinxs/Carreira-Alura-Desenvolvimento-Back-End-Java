@@ -5,8 +5,12 @@ public class Principal {
         meuFilme.anoLancamento = 1970;
         meuFilme.duracaoMinutos = 180;
 
-        System.out.println(meuFilme.nome);
-        System.out.println(meuFilme.anoLancamento);
-        Filme.nome = "Top Gun";
+        meuFilme.exibiFichaTecnica();
+        meuFilme.avalia(8);
+        meuFilme.avalia(5);
+        meuFilme.avalia(10);
+        System.out.println(meuFilme.somaDasAvaliacoes);
+        System.out.println(meuFilme.totalAvaliacoes);
+        System.out.println(meuFilme.pegaMedia());
     }
 }
