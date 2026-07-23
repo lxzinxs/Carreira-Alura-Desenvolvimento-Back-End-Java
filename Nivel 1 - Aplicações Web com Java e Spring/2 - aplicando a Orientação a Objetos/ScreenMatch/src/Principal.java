@@ -1,3 +1,4 @@
+import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 
@@ -16,13 +17,24 @@ public class Principal {
         System.out.println("Total de avaliaçoes: " + meuFilme.getTotalAvaliacoes());
         System.out.println(meuFilme.pegaMedia());
 
-        Serie serie = new Serie();
-        serie.setNome("Lost");
-        serie.setAnoLancamento(2000);
-        serie.exibiFichaTecnica();
-        serie.setTemporadas(10);
-        serie.setEpisodiosPorTemporada(10);
-        serie.setMinutosPorEpisodio(50);
-        System.out.println("Duração para maratonar serie: " + serie.getDuracaoMinutos());
+        Serie lost = new Serie();
+        lost.setNome("Lost");
+        lost.setAnoLancamento(2000);
+        lost.exibiFichaTecnica();
+        lost.setTemporadas(10);
+        lost.setEpisodiosPorTemporada(10);
+        lost.setMinutosPorEpisodio(50);
+        System.out.println("Duração para maratonar serie: " + lost.getDuracaoMinutos());
+
+        Filme outroFilme = new Filme();
+        outroFilme.setNome("Avatar");
+        outroFilme.setAnoLancamento(2023);
+        outroFilme.setDuracaoMinutos(200);
+
+        CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
+        calculadora.inclui(meuFilme);
+        calculadora.inclui(outroFilme);
+        calculadora.inclui(lost);
+        System.out.println("Tempo total " + calculadora.getTempoTotal());
     }
 }
